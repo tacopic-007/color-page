@@ -45,10 +45,8 @@
             } 
 
             const ColorCheck = /^[0-9A-Fa-f]+$/g.test(InputValue);
-            console.log('16進数チェック');
             if (ColorCheck) {
                 body.style.backgroundColor = "#" + InputValue;
-                console.log('16進数チェックok');
             } else return;
         }
     });
