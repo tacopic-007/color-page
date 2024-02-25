@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>色｜color</title>
+</head>
+
+<body>
+    <div style="width: 100%; height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <input type="text" id="input" style="width: max-content; display: none;">
+    </div>
+</body>
+
+</html>
+
+<script>
+    const input = document.getElementById('input');
+    const body = document.getElementsByTagName('body')[0];
+    let StyleTransparent = 0;
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+            const InputValue = input.value;
+            input.value = "";
+
+            if (InputValue === "black") {
+                body.style.backgroundColor = "#000000";
+            } else if (InputValue === "white") {
+                body.style.backgroundColor = "#ffffff";
+            } else if (InputValue === "red") {
+                body.style.backgroundColor = "#ff0000";
+            } else if (InputValue === "yello") {
+                body.style.backgroundColor = "#ffff00";
+            } else if (InputValue === "green") {
+                body.style.backgroundColor = "#00ff00";
+            } else if (InputValue === "light-blue") {
+                body.style.backgroundColor = "#00ffff";
+            } else if (InputValue === "blue") {
+                body.style.backgroundColor = "#0000ff";
+            } else if (InputValue === "purple") {
+                body.style.backgroundColor = "#ff00ff";
+            } 
+
+            const ColorCheck = /^[0-9A-Fa-f]+$/g.test(InputValue);
+            console.log('16進数チェック');
+            if (ColorCheck) {
+                body.style.backgroundColor = "#" + InputValue;
+                console.log('16進数チェックok');
+            } else return;
+        }
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Delete') {
+            if (StyleTransparent === 0) {
+                input.style.display = 'block';
+                StyleTransparent++;
+            } else {
+                input.style.display = 'none';
+                StyleTransparent--;
+            }
+        }
+    });
+</script>
